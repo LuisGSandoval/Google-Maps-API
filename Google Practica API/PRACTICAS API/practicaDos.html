@@ -24,25 +24,33 @@
 
 
 
-    <div id="map"></div>
-    
 
 
 
+    <div id="marker"></div>
 
 
 
 
     <script>
+
+      // PARA MOSTRAR EL MAPA
       var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 60.7415459, lng: 23.644},
-          zoom: 10
+
+      var ubicacion = new Object();
+      function initMapShowMarker() {
+        map = new google.maps.Map(document.getElementById("marker"), {
+          center: 
+          zoom: // ZOOM DESEADO
         });
       }
+      // COLOCAR MARCADORES
+
+      
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXtlifq_ntnS1Sk-bdzwn0ILpAwmzXU4&callback=initMap" async defer></script>
+
+
+
 
     <!-- BOOTSTRAP 4 -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -50,8 +58,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
+    <!-- GOOGLE MAP API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXtlifq_ntnS1Sk-bdzwn0ILpAwmzXU4&callback=initMapShowMarker" async defer></script>
 
 
-    <!-- GOOGLE MAPS API SOURCE SCRIPT  -->
   </body>
 </html>
