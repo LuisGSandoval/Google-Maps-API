@@ -27,27 +27,12 @@
 
 
 
-    <div id="marker"></div>
+    <div id="map"></div>
 
 
 
 
-    <script>
-
-      // PARA MOSTRAR EL MAPA
-      var map;
-
-      var ubicacion = new Object();
-      function initMapShowMarker() {
-        map = new google.maps.Map(document.getElementById("marker"), {
-          center: 
-          zoom: // ZOOM DESEADO
-        });
-      }
-      // COLOCAR MARCADORES
-
-      
-    </script>
+    
 
 
 
@@ -59,7 +44,55 @@
 
 
     <!-- GOOGLE MAP API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXtlifq_ntnS1Sk-bdzwn0ILpAwmzXU4&callback=initMapShowMarker" async defer></script>
+    <script>
+
+
+      var Uno = 36.349944 , Dos = -119.644340;
+
+        // Declaración de array donde estará el objeto
+        var objectArray = [];
+
+        // Declaración del objeto
+        var objPosiciones = {};
+
+
+        // Para asignar la variable al objeto
+        objPosiciones = {
+            lat: Uno,
+            lng: Dos
+        };
+
+
+        // para ingresar datos del objeto al array, esto hará que todos los objetos se ingresen al array diámicamente
+        objectArray.push(objPosiciones);
+
+      // PARA MOSTRAR EL MAPA
+      var map;
+
+      var ubicacion = new Object();
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: objPosiciones,
+          zoom: 24
+        });
+
+        var marker = new google.maps.Marker({
+          position: objPosiciones,
+          map:  map,
+          title: "Mi primer marcador :D",
+        });
+
+        
+      }
+      // COLOCAR MARCADORES
+
+      
+
+
+
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXtlifq_ntnS1Sk-bdzwn0ILpAwmzXU4&callback=initMap" async defer></script>
 
 
   </body>

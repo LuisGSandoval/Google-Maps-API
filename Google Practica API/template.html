@@ -29,30 +29,12 @@
     <div id="donde se mostrará el mapa"></div>
 
     <!-- Codigo base para mostrar el mapa -->
-    <script>
 
-      // PARA MOSTRAR EL MAPA
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById("donde se mostrará el mapa"), {
-          center: // OBJETO DE UBICACIONES,
-          zoom: // ZOOM DESEADO
-        });
-      }
-
-
-
-      // COLOCAR MARCADORES
-
-
-    </script>
-
-
+    
     <!-- BOOTSTRAP 4 -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 
     <!-- GOOGLE MAP API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXtlifq_ntnS1Sk-bdzwn0ILpAwmzXU4&callback=initMap" async defer></script>
@@ -68,7 +50,7 @@
         var Uno, Dos
 
         // Declaración de array donde estará el objeto
-        var objShiftSteps = [];
+        var objLocation = [];
 
         // Declaración del objeto
         var obj = {};
@@ -76,21 +58,50 @@
 
         // Para asignar la variable al objeto
         obj = {
-            datoUno: Uno,
-            datoDos: Dos
+            lat: Uno,
+            lng: Dos
         };
 
 
         // para ingresar datos del objeto al array, esto hará que todos los objetos se ingresen al array diámicamente
-        objShiftSteps.push(obj);
+        objLocation.push(obj);
 
         // para sacar datos del objeto al array, esto hará que todos los objetos que se ingresaron al array diámicamente, se puedan sacar
-        objShiftSteps.pop(obj);
+        objLocation.pop(obj);
 
         //Para serializar como un objeto JSON
-        var JsonStringToSend = JSON.stringify(objShiftSteps);
+        var JsonStringToSend = JSON.stringify(objLocation);
 
     </script>
+
+
+    <script>
+
+      var map;
+      function initMap() {
+        // PARA MOSTRAR EL MAPA
+        map = new google.maps.Map(document.getElementById("donde se mostrará el mapa"), {
+          center: objPosiciones // OBJETO DE UBICACIONES ,
+          zoom: // ZOOM DESEADO
+        });
+
+
+        // COLOCAR MARCADORES
+        var marker = new google.maps.Marker({
+          position: objPosiciones // OBJETO DE UBICACIONES,
+          map:  map  //  DONDE DEBE APARECER,
+          title: "Mensaje"   //  MENSAJE QUE APARECE AL HACER HOVER,
+        });
+
+
+
+
+      }
+    </script>
+
+
+
+
 
   </body>
 </html>
