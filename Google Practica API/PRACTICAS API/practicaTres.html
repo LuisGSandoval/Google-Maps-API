@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <title>Practice # | Practice</title>
   </head>
   <body>
@@ -26,7 +26,7 @@
 
 
     <!-- CUERPO DONDE SE MUESTRA EL MAPA -->    
-    <div id="donde se mostrará el mapa"></div>
+    <div id="map"></div>
 
     <!-- Codigo base para mostrar el mapa -->
 
@@ -47,7 +47,7 @@
     <script type="text/javascript">
       
         // Declaración de variables en el objeto
-        var Uno, Dos
+        var Uno = 36.158253, Dos = -86.777907
 
         // Declaración de array donde estará el objeto
         var objLocation = [];
@@ -79,30 +79,25 @@
 
       var map;
       function initMap() {
-        // PARA MOSTRAR EL MAPA
-        map = new google.maps.Map(document.getElementById("donde se mostrará el mapa"), {
-          center: objPosiciones // OBJETO DE UBICACIONES ,
-          zoom: 8 // ZOOM DESEADO
+        map = new google.maps.Map(document.getElementById('map'), {
+          center:obj,
+          zoom : 10
         });
 
-
-        // COLOCAR MARCADORES
         var marker = new google.maps.Marker({
-          position: objPosiciones // OBJETO DE UBICACIONES,
-          map:  map  //  DONDE DEBE APARECER,
-          title: "Mensaje"   //  MENSAJE QUE APARECE AL HACER HOVER,
+            position: obj,
+            map: map,
+            title :"Hola."
+
+          });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content : "<h1 class='display-1'>Cómo estás?</h1>"
         });
 
-
-        // // COLOCAR Mensajes para cuando se da click sobre un marker
-        // var ventanaInfo = new google.maps.InfoWindow({
-        //   content: "un mensaje cualquiera."
-        // });
-
-        // marker.addEventListener("click", function(){
-        //   ventanaInfo.open(map, marker)
-        // });
-
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker)
+        });
 
 
       }
